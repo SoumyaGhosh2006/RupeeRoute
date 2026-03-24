@@ -1,16 +1,76 @@
-# React + Vite
+# MoneyMind (RupeeRoute)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Metallic glass finance dashboard with:
+- Money Health Score (0-100)
+- Income vs Savings target analysis
+- AI chat coach via secure backend proxy
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Install dependencies:
 
-## React Compiler
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Create `.env` in project root from `.env.example`:
 
-## Expanding the ESLint configuration
+```bash
+cp .env.example .env
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Add your OpenAI key in `.env`:
+
+```env
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4.1-mini
+PORT=8787
+```
+
+## Run
+
+Run client + server together:
+
+```bash
+npm run dev
+```
+
+- Vite client runs on default Vite port.
+- Express server runs on `http://localhost:8787`.
+- Frontend calls `/api/chat` through Vite proxy.
+
+## API
+
+`POST /api/chat`
+
+Request body:
+
+```json
+{
+  "message": "How can I improve savings?",
+  "context": {
+    "income": 50000,
+    "targetSavingsPercent": 20,
+    "rent": 15000,
+    "food": 7000,
+    "travel": 3000,
+    "totalExpense": 25000,
+    "actualSavings": 25000,
+    "actualSavingsRate": 50,
+    "targetSavingsAmount": 10000,
+    "targetGap": 15000,
+    "meetsTarget": true,
+    "score": 88,
+    "band": "Excellent",
+    "highestSpending": "rent"
+  }
+}
+```
+
+Response body:
+
+```json
+{
+  "reply": "..."
+}
+```

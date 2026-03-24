@@ -2,6 +2,8 @@ import { useState } from "react";
 
 export default function ExpenseForm({ setData }) {
   const [form, setForm] = useState({
+    income: "",
+    targetSavingsPercent: "",
     rent: "",
     food: "",
     travel: "",
@@ -18,15 +20,46 @@ export default function ExpenseForm({ setData }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const normalize = (value) => Math.max(Number(value) || 0, 0);
+
     setData({
-      rent: Number(form.rent) || 0,
-      food: Number(form.food) || 0,
-      travel: Number(form.travel) || 0,
+      income: normalize(form.income),
+      targetSavingsPercent: normalize(form.targetSavingsPercent),
+      rent: normalize(form.rent),
+      food: normalize(form.food),
+      travel: normalize(form.travel),
     });
   };
 
   return (
     <form className="expense-form" onSubmit={handleSubmit}>
+      <label>
+        Monthly Income
+        <input
+          type="number"
+          min="0"
+          name="income"
+          placeholder="0"
+          value={form.income}
+          onChange={handleChange}
+          required
+        />
+      </label>
+
+      <label>
+        Target Savings %
+        <input
+          type="number"
+          min="0"
+          max="100"
+          name="targetSavingsPercent"
+          placeholder="20"
+          value={form.targetSavingsPercent}
+          onChange={handleChange}
+          required
+        />
+      </label>
+
       <label>
         Rent
         <input
