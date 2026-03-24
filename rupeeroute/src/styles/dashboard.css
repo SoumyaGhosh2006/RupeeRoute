@@ -1,0 +1,41 @@
+.dashboard {
+  display: flex;
+  height: 100vh;
+  gap: 20px;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 220px;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.topbar {
+  height: 60px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  flex: 1;
+  height: 200px;
+}
+
+.bottom {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.chat, .form {
+  flex: 1;
+}
