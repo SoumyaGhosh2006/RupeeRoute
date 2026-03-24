@@ -1,17 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
 :root {
-  --bg: #f5f7fb;
-  --text: #1a1a1a;
-  --card: rgba(255, 255, 255, 0.6);
+  --bg: #f2f3f5;
+  --bg-elev: #d7dade;
+  --text: #14161a;
+  --muted: #444b56;
+  --card: rgba(255, 255, 255, 0.55);
+  --border: rgba(255, 255, 255, 0.5);
+  --edge: rgba(0, 0, 0, 0.08);
+  --glow: rgba(255, 255, 255, 0.55);
+  --chart-text: #111318;
 }
 
 [data-theme="dark"] {
-  --bg: #0f172a;
-  --text: #f1f5f9;
-  --card: rgba(15, 23, 42, 0.6);
+  --bg: #07090c;
+  --bg-elev: #151a21;
+  --text: #f7f8f9;
+  --muted: #a8afba;
+  --card: rgba(25, 29, 36, 0.58);
+  --border: rgba(255, 255, 255, 0.14);
+  --edge: rgba(0, 0, 0, 0.45);
+  --glow: rgba(255, 255, 255, 0.14);
+  --chart-text: #ecedf0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
 }
 
 body {
-  background: var(--bg);
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
   color: var(--text);
-  transition: all 0.3s ease;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(255, 255, 255, 0.48), transparent 35%),
+    radial-gradient(circle at 82% 4%, rgba(255, 255, 255, 0.21), transparent 30%),
+    linear-gradient(130deg, var(--bg), var(--bg-elev));
+  transition: background 240ms ease, color 240ms ease;
+}
+
+h2,
+h3,
+h4,
+p,
+ul {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
 }
